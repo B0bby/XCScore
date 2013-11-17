@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 
 /**
@@ -10,7 +11,8 @@ import java.util.ArrayList;
 public class XCScore {
     public static void main(String args[]){
         Race race = new Race();
+        DatabaseConnection connection = new DatabaseConnection();
 
-
+        connection.readFromDatabase();
     }
 }

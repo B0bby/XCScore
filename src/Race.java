@@ -7,6 +7,10 @@
  */
 import java.util.ArrayList;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class Race {
     private static ArrayList<Team> teams = new ArrayList<Team>();
     private static ArrayList<Runner> runners = new ArrayList<Runner>();
