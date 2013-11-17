@@ -29,7 +29,7 @@ public class DatabaseConnection {
 
             Connection connection = DriverManager.getConnection(myUrl, user, password);
 
-            String query = "INSERT INTO races (id, name) VALUES ('1','Warrior Dash')";
+            String query = "INSERT INTO races (name) VALUES ('Chicago Marathon')";
             Statement statement = connection.createStatement();
 
             statement.executeUpdate(query);
@@ -38,7 +38,6 @@ public class DatabaseConnection {
         }
         catch (Exception e)
         {
-            System.err.println("Got an exception! ");
             System.err.println(e.fillInStackTrace());
             e.printStackTrace();
         }
