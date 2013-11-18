@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -9,17 +10,25 @@ import org.junit.Test;
  */
 
 public class XCScoreTests {
-    @org.junit.Test
+    public DatabaseHandler database = new DatabaseHandler();
+
+    @Before
+    public void setUp(){
+
+    }
+
+    @Test
     public void testShouldPass(){
         assert (1 == 1);
     }
-    @org.junit.Test
+    @Test
     public void testShouldFail(){
         assert (1 == 0);
     }
     @Test
-    public void playerIsAddedToDatabase(){
-
+    public void runnerAddedToDatabase(){
+        String query = "";
+        database.addRunner("Bob", "LeGrand", "Female", "1-(815)467-1234");
     }
     @Test
     public void teamIsAddedToDatabase(){

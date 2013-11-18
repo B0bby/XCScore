@@ -1,6 +1,3 @@
-
-import java.util.ArrayList;
-
 /**
  * Created with IntelliJ IDEA.
  * User: b0b
@@ -9,10 +6,12 @@ import java.util.ArrayList;
  * To change this template use File | Settings | File Templates.
  */
 public class XCScore {
+
     public static void main(String args[]){
         Race race = new Race();
-        DatabaseConnection connection = new DatabaseConnection();
+        DatabaseHandler database = new DatabaseHandler();
 
-        connection.readFromDatabase();
+        database.readTeamCSVInfoIntoDatabase("data/teams.csv");
+        database.readRunnerCSVInfoIntoDatabase("data/runners.csv");
     }
 }

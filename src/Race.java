@@ -7,24 +7,20 @@
  */
 import java.util.ArrayList;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
 public class Race {
     private static ArrayList<Team> teams = new ArrayList<Team>();
-    private static ArrayList<Runner> runners = new ArrayList<Runner>();
+    private static ArrayList<RunnerBuilder> runners = new ArrayList<RunnerBuilder>();
 
-    public void addRunnerToDatabase(Runner runner){
-
-    }
-    public void removeRunnerFromDatabase(Runner runner){
+    public void addRunnerToDatabase(RunnerBuilder runner){
 
     }
-    public void updateRunnerTime(Runner runner){
+    public void removeRunnerFromDatabase(RunnerBuilder runner){
 
     }
-    public void disqualifyRunner(Runner runner){
+    public void updateRunnerTime(RunnerBuilder runner){
+
+    }
+    public void disqualifyRunner(RunnerBuilder runner){
 
     }
     public void scoreTeams(ArrayList teams){
