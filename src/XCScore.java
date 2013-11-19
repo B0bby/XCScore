@@ -11,7 +11,14 @@ public class XCScore {
         Race race = new Race();
         DatabaseHandler database = new DatabaseHandler();
 
-        database.readTeamCSVInfoIntoDatabase("data/teams.csv");
-        database.readRunnerCSVInfoIntoDatabase("data/runners.csv");
+//        database.readTeamCSVInfoIntoDatabase("data/teams.csv");
+//        database.readRaceCSVInfoIntoDatabase("data/races.csv");
+//        database.readRegisteredTeamsIntoDatabase("data/registeredTeams.csv");
+//
+//        database.readRunnerCSVInfoIntoDatabase("data/runners.csv");
+
+//        database.readRunnerOffsetTimesIntoDatabase("data/startOffsets.csv");
+//        database.readRunnerFinishTimesIntoDatabase("data/finishTimes.csv");
+        database.updateFinishTime("67", "4", "9999999");
     }
 }

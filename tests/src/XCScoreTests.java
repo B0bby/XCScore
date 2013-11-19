@@ -27,8 +27,7 @@ public class XCScoreTests {
     }
     @Test
     public void runnerAddedToDatabase(){
-        String query = "";
-        database.addRunner("Bob", "LeGrand", "Female", "1-(815)467-1234");
+
     }
     @Test
     public void teamIsAddedToDatabase(){
