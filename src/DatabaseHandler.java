@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -14,14 +15,24 @@ import java.sql.*;
 public class DatabaseHandler {
     private Connection connection = null;
     private ResultSet resultSet = null;
+    private String DBNAME;
+    private String URL;
+    private String USER;
+    private String PASS;
+
+    public DatabaseHandler(){
+        this.DBNAME = "xcscore";
+        this.URL = "jdbc:mysql://localhost:3306/";
+        this.USER = "xcscore";
+        this.PASS = "password";
+    }
 
     private void openDatabaseConnection(){
         try{
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            String dbName = "xcscore";
-            String myUrl = "jdbc:mysql://localhost:3306/" + dbName;
-            String user = "xcscore";
-            String password = "password";
+            String myUrl = URL + DBNAME;
+            String user = USER;
+            String password = PASS;
 
             connection = DriverManager.getConnection(myUrl, user, password);
         }
@@ -49,18 +60,22 @@ public class DatabaseHandler {
         closeDatabaseConnection();
     }
 
-    private ResultSet readFromDatabase(String query){
+    private String[] readFromDatabase(String query){
+        ArrayList<String> data = new ArrayList<String>();
         openDatabaseConnection();
 
         try{
             Statement statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
+            while (resultSet.next()){
+                data.add(resultSet.getString(1));
+            }
         }
         catch (Exception e){ e.printStackTrace(); }
 
         closeDatabaseConnection();
 
-        return resultSet;
+        return data.toArray(new String[data.size()]);
     }
 
     private boolean checkIfExists(String query){
@@ -284,6 +299,12 @@ public class DatabaseHandler {
     public void updateTeam(int teamID, String teamName){
         String query = "UPDATE Teams SET teamName='" + teamName + "' WHERE teamID=" + teamID;
         writeToDatabase(query);
+    }
+
+    public String[] getListOfTeams(){
+        String query = "SELECT teamName FROM Teams WHERE 1";
+
+        return readFromDatabase(query);
     }
 
     public void readRaceCSVInfoIntoDatabase(String fileName) {

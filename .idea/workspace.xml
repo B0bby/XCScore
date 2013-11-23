@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0a5c409-e202-4c77-8592-5defc6451c38" name="Default" comment="Database connection established.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GUI/GUI.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GUI/src/GUI.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GUI/data/hello.bxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/xcscore.sql" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/data/runners.csv" afterPath="$PROJECT_DIR$/data/runners-long.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/RunnerSplitTableModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/XCScoreGUI.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GUI/src/hello.bxml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/GUI/data/hello.bxml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DatabaseHandler.java" afterPath="$PROJECT_DIR$/src/DatabaseHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/XCScore.java" afterPath="$PROJECT_DIR$/src/XCScore.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/src/XCScoreTests.java" afterPath="$PROJECT_DIR$/tests/src/XCScoreTests.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GUI/src/GUI.java" afterPath="$PROJECT_DIR$/GUI/src/GUI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="XCScore.iws" />
@@ -22,16 +18,25 @@
     <file path="/a.groovy" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1384620681504" ignored="false" />
     <file path="/a.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1384620687505" ignored="false" />
     <file path="/XCScoreTests.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1384720333872" ignored="false" />
-    <file path="/fragment.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1384870450402" ignored="false" />
+    <file path="/fragment.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1385067445493" ignored="false" />
     <file path="/Race.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1384659927927" ignored="false" />
     <file path="/XCScoreTest.groovy" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1384626486681" ignored="false" />
     <file path="/XCScore.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1384870141410" ignored="false" />
     <file path="/DatabaseConnection.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1384721073308" ignored="false" />
     <file path="/Runner.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1384721819830" ignored="false" />
-    <file path="/DatabaseHandler.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1384837521584" ignored="false" />
+    <file path="/DatabaseHandler.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1385091076614" ignored="false" />
     <file path="/teams.csv" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1384725362536" ignored="false" />
     <file path="/runners.csv" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1384732204623" ignored="false" />
-    <file path="/GUI.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1384870670697" ignored="false" />
+    <file path="/GUI.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1385068995512" ignored="false" />
+    <file path="$USER_HOME$/downloads/prefuse-beta/src/prefuse/util/collections/IntObjectHashMap.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1385042044965" ignored="false" />
+    <file path="$USER_HOME$/downloads/prefuse-beta/src/prefuse/action/layout/graph/NodeLinkTreeLayout.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1385042055886" ignored="false" />
+    <file path="$USER_HOME$/downloads/prefuse-beta/src/prefuse/util/collections/AbstractHashMap.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1385042059297" ignored="false" />
+    <file path="$USER_HOME$/downloads/prefuse-beta/src/prefuse/action/layout/graph/BalloonTreeLayout.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1385042082438" ignored="false" />
+    <file path="$USER_HOME$/downloads/prefuse-beta/demos/prefuse/demos/Congress.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1385042151166" ignored="false" />
+    <file path="$USER_HOME$/downloads/prefuse-beta/demos/prefuse/demos/DataMountain.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1385042401844" ignored="false" />
+    <file path="$USER_HOME$/downloads/prefuse-beta/.idea/workspace.xml" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1385063718369" ignored="false" />
+    <file path="/XCScoreGUI.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1385091792588" ignored="false" />
+    <file path="/runnerSplitTableModel.java" changelist="d0a5c409-e202-4c77-8592-5defc6451c38" time="1385089761489" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +93,23 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint url="file://$PROJECT_DIR$/src/XCScoreGUI.java" line="79" class="XCScoreGUI" package="">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </line_breakpoints>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -101,92 +122,100 @@
       <file leaf-file-name="DatabaseHandler.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DatabaseHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="32" selection-start="1311" selection-end="1311" vertical-scroll-proportion="0.0">
+            <state line="77" column="55" selection-start="2244" selection-end="2244" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1811#1819#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="finishTimes.csv" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/finishTimes.csv">
+      <file leaf-file-name="ResultSetImpl.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/lib/mysql-connector-java-5.1.27-bin.jar!/com/mysql/jdbc/ResultSetImpl.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="13" selection-start="407" selection-end="407" vertical-scroll-proportion="0.0">
+            <state line="363" column="29" selection-start="20774" selection-end="20774" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="startOffsets.csv" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/startOffsets.csv">
+      <file leaf-file-name="StatementImpl.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/lib/mysql-connector-java-5.1.27-bin.jar!/com/mysql/jdbc/StatementImpl.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="117" column="30" selection-start="5923" selection-end="5923" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="XCScore.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/XCScore.java">
+      <file leaf-file-name="ConnectionImpl.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/lib/mysql-connector-java-5.1.27-bin.jar!/com/mysql/jdbc/ConnectionImpl.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="293" column="30" selection-start="17000" selection-end="17000" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GUI.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/GUI/src/GUI.java">
+      <file leaf-file-name="NonRegisteringDriver.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/lib/mysql-connector-java-5.1.27-bin.jar!/com/mysql/jdbc/NonRegisteringDriver.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="64" selection-start="559" selection-end="559" vertical-scroll-proportion="0.433213">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="60" column="34" selection-start="3570" selection-end="3570" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Driver.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/lib/mysql-connector-java-5.1.27-bin.jar!/com/mysql/jdbc/Driver.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="11" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="hello.bxml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GUI/data/hello.bxml">
+        <entry file="file://$PROJECT_DIR$/GUI/src/hello.bxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="26" selection-start="316" selection-end="316" vertical-scroll-proportion="-3.75">
+            <state line="3" column="50" selection-start="244" selection-end="244" vertical-scroll-proportion="-1.875">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="XCScoreTests.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/src/XCScoreTests.java">
+      <file leaf-file-name="GUI.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GUI/src/GUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="0" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="117" column="34" selection-start="4452" selection-end="4452" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#4988#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#4752#4978#0" expanded="true" />
+                <element signature="e#4967#4968#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="races.csv" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/races.csv">
+      <file leaf-file-name="XCScoreGUI.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/XCScoreGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="9" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="64" column="64" selection-start="2040" selection-end="2040" vertical-scroll-proportion="0.37545127">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5389#5584#0" expanded="true" />
+                <element signature="e#5573#5574#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="registeredTeams.csv" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/registeredTeams.csv">
+      <file leaf-file-name="RunnerSplitTableModel.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RunnerSplitTableModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="runners.csv" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/runners.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="86" column="37" selection-start="3354" selection-end="3354" vertical-scroll-proportion="0.0">
+            <state line="30" column="34" selection-start="801" selection-end="801" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -216,22 +245,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/tests/src/XCScoreTest.groovy" />
-        <option value="$PROJECT_DIR$/src/Race.java" />
-        <option value="$PROJECT_DIR$/src/DatabaseConnection.java" />
-        <option value="$PROJECT_DIR$/src/Runner.java" />
-        <option value="$PROJECT_DIR$/src/RunnerBuilder.java" />
         <option value="$PROJECT_DIR$/data/teams.csv" />
         <option value="$PROJECT_DIR$/data/startOffsets.csv" />
         <option value="$PROJECT_DIR$/data/finishTimes.csv" />
         <option value="$PROJECT_DIR$/data/registeredTeams.csv" />
         <option value="$PROJECT_DIR$/data/runners.csv" />
         <option value="$PROJECT_DIR$/data/races.csv" />
-        <option value="$PROJECT_DIR$/src/DatabaseHandler.java" />
         <option value="$PROJECT_DIR$/tests/src/XCScoreTests.java" />
         <option value="$PROJECT_DIR$/data/hello.bxml" />
         <option value="$PROJECT_DIR$/src/XCScore.java" />
+        <option value="$PROJECT_DIR$/GUI/data/hello.bxml" />
+        <option value="$PROJECT_DIR$/GUI/src/hello.bxml" />
         <option value="$PROJECT_DIR$/GUI/src/GUI.java" />
+        <option value="$PROJECT_DIR$/src/runnerSplitTableModel.java" />
+        <option value="$PROJECT_DIR$/src/RunnerSplitTableModel.java" />
+        <option value="$PROJECT_DIR$/src/DatabaseHandler.java" />
+        <option value="$PROJECT_DIR$/src/XCScoreGUI.java" />
       </list>
     </option>
   </component>
@@ -351,6 +380,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XCScore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="XCScore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="GUI" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -370,24 +413,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="XCScore" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="XCScore" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GUI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -465,12 +490,35 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/GUI/src" />
       <recent name="$PROJECT_DIR$/GUI/data" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GUI">
+  <component name="RunManager" selected="Application.XCScoreGUI">
+    <configuration default="false" name="XCScoreGUI" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="XCScoreGUI" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="XCScore" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -585,7 +633,7 @@
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="XCScore" />
+      <module name="FX" />
       <envs />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="" />
@@ -598,7 +646,7 @@
       <method />
     </configuration>
     <configuration default="false" name="XCScoreTests" type="JUnit" factoryName="JUnit">
-      <module name="XCScore_GUI" />
+      <module name="FX" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
@@ -619,11 +667,17 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Application.GUI" />
       <item index="1" class="java.lang.String" itemvalue="Application.XCScore" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.XCScoreTests" />
+      <item index="3" class="java.lang.String" itemvalue="Application.XCScoreGUI" />
     </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Application.XCScoreGUI" />
+      </list>
+    </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
@@ -693,15 +747,15 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33033708" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.32944787" sideWeight="0.6707865" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.32944787" sideWeight="0.6707865" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295964" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969324" sideWeight="0.6707865" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969324" sideWeight="0.6737668" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39910313" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32623318" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32623318" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969324" sideWeight="0.42696628" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921347" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32735425" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921347" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32735425" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295964" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24969324" sideWeight="0.6707865" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32944787" sideWeight="0.6707865" order="3" side_tool="false" content_ui="tabs" />
@@ -793,102 +847,16 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/mysql-connector-java-5.1.27-bin.jar!/com/mysql/jdbc/ConnectionImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="519" column="16" selection-start="28480" selection-end="28480" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/mysql-connector-java-5.1.27-bin.jar!/com/mysql/jdbc/StatementImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="30" selection-start="5923" selection-end="5923" vertical-scroll-proportion="0.28113878">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Race.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="3" selection-start="151" selection-end="151" vertical-scroll-proportion="0.0">
+        <state line="9" column="13" selection-start="194" selection-end="194" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/runners-long.csv">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea_rt.jar!/com/intellij/rt/execution/application/AppMain.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="457" column="18" selection-start="17578" selection-end="17578" vertical-scroll-proportion="0.6425993">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/teams.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/registeredTeams.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Runner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="27" selection-start="284" selection-end="284" vertical-scroll-proportion="0.28695652">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/runners.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="37" selection-start="3354" selection-end="3354" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/races.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="9" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/startOffsets.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/finishTimes.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="13" selection-start="407" selection-end="407" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DatabaseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="32" selection-start="1311" selection-end="1311" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GUI/data/hello.bxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="26" selection-start="316" selection-end="316" vertical-scroll-proportion="-3.75">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/src/XCScoreTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="0" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0">
+        <state line="17" column="0" selection-start="667" selection-end="667" vertical-scroll-proportion="0.4173913">
           <folding />
         </state>
       </provider>
@@ -902,9 +870,103 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GUI/src/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="64" selection-start="559" selection-end="559" vertical-scroll-proportion="0.433213">
+        <state line="117" column="34" selection-start="4452" selection-end="4452" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#4988#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#4752#4978#0" expanded="true" />
+            <element signature="e#4967#4968#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/src/hello.bxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="50" selection-start="244" selection-end="244" vertical-scroll-proportion="-1.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar!/java/awt/event/InvocationEvent.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="0" selection-start="1540" selection-end="1540" vertical-scroll-proportion="0.83985764">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar!/javax/swing/table/AbstractTableModel.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="16" selection-start="726" selection-end="726" vertical-scroll-proportion="0.33212996">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar!/javax/swing/table/DefaultTableModel.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="80" selection-start="3085" selection-end="3085" vertical-scroll-proportion="0.42608696">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/mysql-connector-java-5.1.27-bin.jar!/com/mysql/jdbc/Driver.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="11" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/mysql-connector-java-5.1.27-bin.jar!/com/mysql/jdbc/NonRegisteringDriver.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="34" selection-start="3570" selection-end="3570" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/mysql-connector-java-5.1.27-bin.jar!/com/mysql/jdbc/ConnectionImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="293" column="30" selection-start="17000" selection-end="17000" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/mysql-connector-java-5.1.27-bin.jar!/com/mysql/jdbc/StatementImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="117" column="30" selection-start="5923" selection-end="5923" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/mysql-connector-java-5.1.27-bin.jar!/com/mysql/jdbc/ResultSetImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="363" column="29" selection-start="20774" selection-end="20774" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DatabaseHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="55" selection-start="2244" selection-end="2244" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1811#1819#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RunnerSplitTableModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="34" selection-start="801" selection-end="801" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/XCScoreGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="64" selection-start="2040" selection-end="2040" vertical-scroll-proportion="0.37545127">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5389#5584#0" expanded="true" />
+            <element signature="e#5573#5574#0" expanded="true" />
           </folding>
         </state>
       </provider>
