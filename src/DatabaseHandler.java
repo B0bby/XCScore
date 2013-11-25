@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import java.sql.*;
 
 /**
@@ -27,7 +26,14 @@ public class DatabaseHandler {
         this.PASS = "password";
     }
 
-    private void openDatabaseConnection(){
+    public DatabaseHandler(String dbname, String address, String user, String pass){
+        this.DBNAME = dbname;
+        this.URL = "jdbc:mysql://" + address + "/";
+        this.USER = user;
+        this.PASS = pass;
+    }
+
+    public void openDatabaseConnection(){
         try{
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             String myUrl = URL + DBNAME;
@@ -39,12 +45,12 @@ public class DatabaseHandler {
         catch (Exception e){ e.printStackTrace(); }
     }
 
-    private void closeDatabaseConnection(){
+    public void closeDatabaseConnection(){
         try{ connection.close(); }
         catch (Exception e){ e.printStackTrace(); }
     }
 
-    private void writeToDatabase(String query){
+    public void writeToDatabase(String query){
         openDatabaseConnection();
 
         try {
@@ -60,13 +66,52 @@ public class DatabaseHandler {
         closeDatabaseConnection();
     }
 
-    private String[] readFromDatabase(String query){
+    public String[][] readTableFromDatabase(String query){
+        ArrayList<String[]> data = new ArrayList<String[]>();
+
+        openDatabaseConnection();
+
+        try{
+            Statement statement = connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            int columnCount = resultSet.getMetaData().getColumnCount();
+            int rowCount = resultSet.getRow();
+
+            if (!resultSet.next()){
+                closeDatabaseConnection();
+                return new String[0][0];
+            } else { resultSet.beforeFirst(); }
+
+            while(resultSet.next())
+            {
+                String[] row = new String[columnCount];
+                for (int i=0; i <columnCount ; i++)
+                {
+                    row[i] = resultSet.getString(i + 1);
+                }
+                data.add(row);
+            }
+        }
+        catch (Exception e){ e.printStackTrace(); }
+
+        closeDatabaseConnection();
+
+        return data.toArray(new String[data.size()][data.get(0).length]);
+    }
+
+    public String[] readColumnFromDatabase(String query){
         ArrayList<String> data = new ArrayList<String>();
         openDatabaseConnection();
 
         try{
             Statement statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
+
+            if (!resultSet.next()){
+                closeDatabaseConnection();
+                return new String[0];
+            } else { resultSet.beforeFirst(); }
+
             while (resultSet.next()){
                 data.add(resultSet.getString(1));
             }
@@ -161,60 +206,12 @@ public class DatabaseHandler {
         writeToDatabase(query);
     }
 
-    public void readRunnerOffsetTimesIntoDatabase(String fileName){
-        try{
-            File file = new File(fileName);
-            FileReader reader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(reader);
-
-            while (bufferedReader.ready()){
-                String nextLine = bufferedReader.readLine();
-                String[] runnerInfo = nextLine.split(",");
-
-                recordStartOffset(runnerInfo[0],
-                        runnerInfo[1],
-                        runnerInfo[2]);
-            }
-        }
-        catch (Exception e){ e.printStackTrace(); }
-    }
-
-    public boolean startOffsetExists(String bibNumber, String raceID){
-        boolean startOffsetExists = false;
-        String query = "SELECT * FROM Results WHERE raceID=" + raceID + " AND bibNumber=" + bibNumber;
-
-        try { startOffsetExists = checkIfExists(query); }
-        catch (Exception e) { e.printStackTrace(); }
-
-        return startOffsetExists;
-    }
-
-    public void recordStartOffset(String bibNumber, String raceID, String startOffset){
-        if (startOffsetExists(bibNumber, raceID)){
-            updateStartOffset(bibNumber, raceID, startOffset);
-        } else {
-            String values = bibNumber + ", " + raceID + ", '" + startOffset + "'";
-            String query = "INSERT INTO Results " +
-                    "(bibNumber, raceID, startOffset)" +
-                    "VALUES (" + values +")";
-            writeToDatabase(query);
-        }
-    }
-
-    public void updateStartOffset(String bibNumber, String raceID, String startOffset){
-        String query = "UPDATE Results SET" +
-                " startOffset='" + startOffset + "'" +
-                " WHERE raceID=" + raceID + " AND bibNumber=" + bibNumber;
-        writeToDatabase(query);
-    }
-
     public void readRunnerFinishTimesIntoDatabase(String fileName){
         try{
             File file = new File(fileName);
             FileReader reader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(reader);
 
-            int bibNumber = 1;
             while (bufferedReader.ready()){
                 String nextLine = bufferedReader.readLine();
                 String[] runnerInfo = nextLine.split(",");
@@ -223,7 +220,6 @@ public class DatabaseHandler {
                         runnerInfo[1],
                         runnerInfo[2]);
 
-                bibNumber++;
             }
         }
         catch (Exception e){ e.printStackTrace(); }
@@ -239,13 +235,13 @@ public class DatabaseHandler {
         return finishTimeExists;
     }
 
-    public void recordFinishTime(String bibNumber, String raceID, String finishTime){
+    public void recordFinishTime(String raceID, String bibNumber, String finishTime){
         if (finishTimeExists(raceID, bibNumber)){
             updateFinishTime(bibNumber, raceID, finishTime);
         } else {
-            String values = bibNumber + ", " + raceID + ", '" + finishTime + "'";
+            String values = raceID + ", " + bibNumber + ", '" + finishTime + "'";
             String query = "INSERT INTO Results " +
-                    "(bibNumber, raceID, finishTime)" +
+                    "(raceID, bibNumber, finishTime)" +
                     "VALUES (" + values +")";
             writeToDatabase(query);
         }
@@ -299,12 +295,6 @@ public class DatabaseHandler {
     public void updateTeam(int teamID, String teamName){
         String query = "UPDATE Teams SET teamName='" + teamName + "' WHERE teamID=" + teamID;
         writeToDatabase(query);
-    }
-
-    public String[] getListOfTeams(){
-        String query = "SELECT teamName FROM Teams WHERE 1";
-
-        return readFromDatabase(query);
     }
 
     public void readRaceCSVInfoIntoDatabase(String fileName) {
