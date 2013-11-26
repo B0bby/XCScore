@@ -6,18 +6,18 @@ import com.intellij.ui.table.JBTable;
 import org.jdesktop.swingx.autocomplete.AutoCompleteComboBoxEditor;
 import org.jdesktop.swingx.autocomplete.ComboBoxCellEditor;
 
-import javax.swing.event.CellEditorListener;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
+import javax.swing.event.*;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import javax.swing.text.TableView;
 
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
+import java.util.Vector;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,13 +27,15 @@ import java.awt.event.KeyEvent;
  * To change this template use File | Settings | File Templates.
  */
 public class XCScoreGUI extends JPanel{
+    private int TIMER_GRANULARITY = 10;
+    private boolean DEBUG = false;
+
     private XCScore xcscore = new XCScore();
-    private boolean DEBUG;
     private Timer timer;
-    private int hour, minute, second, raceNumber;
+    private int hour, minute, second;
     private long millisecond;
 
-    final SplitTableModel splitTableModel = new SplitTableModel(DEBUG);
+    final SplitTableModel splitTableModel = new SplitTableModel(DEBUG, xcscore);
     final RunnerTableModel runnerTableModel = new RunnerTableModel(DEBUG);
     final TeamTableModel teamTableModel = new TeamTableModel(DEBUG);
     final RaceTableModel raceTableModel = new RaceTableModel(DEBUG);
@@ -48,17 +50,15 @@ public class XCScoreGUI extends JPanel{
     final JButton delTeamButton = new JButton("Delete");
     final JButton addRaceButton = new JButton("Add");
     final JButton delRaceButton = new JButton("Delete");
+    final JButton scoreRaceButton = new JButton("Score Race");
     final JComboBox bibNumbers = new JComboBox(xcscore.getBibNumbers());
 
     public XCScoreGUI(){
-        this(false);
-    }
-
-    public XCScoreGUI(boolean DEBUG){
         addAllTabsToWindow();
+
         attachActionListeners();
+
         updateAllTablesFromDatabase();
-        this.DEBUG = DEBUG;
     }
 
     private void updateAllTablesFromDatabase(){
@@ -78,7 +78,7 @@ public class XCScoreGUI extends JPanel{
                 timeClock.setText(timePassed(false));
             }
         };
-        timer = new Timer(1, timerAction);
+        timer = new Timer(TIMER_GRANULARITY, timerAction);
 
         ActionListener splitButtonAction = new ActionListener() {
             @Override
@@ -92,9 +92,20 @@ public class XCScoreGUI extends JPanel{
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 timer.start();
+
+                deleteAllSplits();
+
+                scoreRaceButton.setEnabled( false );
+                scoreRaceButton.setFont(new Font("Helvetica", Font.PLAIN, 20));
+
                 splitButton.setEnabled( true );
+                splitButton.setFont(new Font("Helvetica", Font.BOLD, 24));
+
                 stopButton.setEnabled( true );
+                stopButton.setFont(new Font("Helvetica", Font.BOLD, 20));
+
                 startButton.setEnabled( false );
+                startButton.setFont(new Font("Helvetica", Font.PLAIN, 20));
             }
         };
         startButton.addActionListener(startButtonListener);
@@ -102,9 +113,20 @@ public class XCScoreGUI extends JPanel{
         ActionListener stopButtonListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                if (splitTableModel.getRowCount() > 0){
+                    scoreRaceButton.setEnabled( true );
+                    scoreRaceButton.setFont(new Font("Helvetica", Font.BOLD, 20));
+                }
+
                 splitButton.setEnabled( false );
+                splitButton.setFont(new Font("Helvetica", Font.PLAIN, 24));
+
                 stopButton.setEnabled( false );
+                stopButton.setFont(new Font("Helvetica", Font.PLAIN, 20));
+
                 startButton.setEnabled( true );
+                startButton.setFont(new Font("Helvetica", Font.BOLD, 20));
+
                 hour = minute = second = 0;
                 millisecond = 0;
                 timer.stop();
@@ -112,44 +134,63 @@ public class XCScoreGUI extends JPanel{
         };
         stopButton.addActionListener(stopButtonListener);
 
-        splitTableModel.addTableModelListener(new TableModelListener() {
+        ActionListener scoreRaceButtonListener = new ActionListener() {
             @Override
-            public void tableChanged(TableModelEvent tableModelEvent) {
-                Object row = tableModelEvent.getSource();
+            public void actionPerformed(ActionEvent actionEvent) {
+                displayResults();
             }
-        });
+        };
+        scoreRaceButton.addActionListener(scoreRaceButtonListener);
+    }
 
-//        CellEditorListener bibChangeListener = new CellEditorListener() {
-//            @Override
-//            public void editingStopped(ChangeEvent changeEvent) {
-//                ComboBoxCellEditor source = (ComboBoxCellEditor)changeEvent.getSource();
-//                String bibNumber = (String)source.getCellEditorValue();
-//
-//                JComboBox cell = (JComboBox)source.getComponent();
-//                Object item = cell.getEditor().getItem();
-//
-//                String[] runnerData = xcscore.getSingleRunnerData(bibNumber);
-//
-//                splitTableModel.fireTableDataChanged();
-//
-//                int column = 0;
-//                for (String data : runnerData){
-//                    splitTableModel.setValueAt(data, 1, column);
-//                    column++;
-//                }
-//            }
-//
-//            @Override
-//            public void editingCanceled(ChangeEvent changeEvent) {
-//                //To change body of implemented methods use File | Settings | File Templates.
-//            }
-//        };
-//        splitTable.getColumnModel().getColumn(0).getCellEditor().addCellEditorListener(bibChangeListener);
+    private String[][] packageTableData(DefaultTableModel table){
+        int filledRowCount = 0;
+        int columnCount = table.getColumnCount();
+        Vector tableModelData = table.getDataVector();
+        Object[] tableModelArray = tableModelData.toArray();
+        String[][] finalDataArray;
 
+        filledRowCount = countFilledRows(tableModelArray);
+        finalDataArray = new String[filledRowCount][columnCount];
+
+        int row = 0;
+        for (Object rowArray : tableModelArray){
+            Vector rowDataVector = (Vector)rowArray;
+            Object[] rowDataArray = rowDataVector.toArray();
+            if (!rowDataArray[0].equals("")){
+                for (int column = 0; column < columnCount; column++){
+                    finalDataArray[row][column] = (String)rowDataArray[column];
+                }
+                row++;
+            }
+        }
+        return finalDataArray;
+    }
+
+    private int countFilledRows(Object[] tableModelArray){
+        int filledRowCount = 0;
+
+        for (Object rowArray : tableModelArray){
+            Vector rowDataVector = (Vector)rowArray;
+            Object[] rowDataArray = rowDataVector.toArray();
+            if (!rowDataArray[0].equals("")){
+                filledRowCount++;
+            }
+        }
+        return filledRowCount;
+    }
+
+    private void deleteAllSplits(){
+        int rowTotal = splitTableModel.getRowCount();
+        int rowIndex = 0;
+        while (rowIndex < rowTotal){
+            splitTableModel.removeRow(0);
+            rowIndex++;
+        }
     }
 
     private void addSplit(){
-        splitTableModel.addRow(new Object[]{"","","","", timePassed(true)});
+        splitTableModel.addRow(new Object[]{"","","", timePassed(true)});
     }
 
     private String timePassed(boolean returnMilliseconds) {
@@ -157,7 +198,7 @@ public class XCScoreGUI extends JPanel{
             hours = minutes = seconds = "";
         String time = "";
 
-        millisecond++;
+        millisecond += TIMER_GRANULARITY;
 
         if ((millisecond % 1000) == 0){ second++;}
         if (second == 60){ minute++; second = 0; }
@@ -195,9 +236,9 @@ public class XCScoreGUI extends JPanel{
         mainTabGroup.addTab("Teams",teamViewWindow);
         mainTabGroup.setMnemonicAt(2, KeyEvent.VK_1);
 
-        JComponent raceViewWindow = buildRaceViewTab();
-        mainTabGroup.addTab("Races",raceViewWindow);
-        mainTabGroup.setMnemonicAt(3, KeyEvent.VK_1);
+//        JComponent raceViewWindow = buildRaceViewTab();
+//        mainTabGroup.addTab("Races",raceViewWindow);
+//        mainTabGroup.setMnemonicAt(3, KeyEvent.VK_1);
 
         add(mainTabGroup);
     }
@@ -205,15 +246,20 @@ public class XCScoreGUI extends JPanel{
     private JComponent buildMainViewTab(){
         JPanel mainPanel = new JPanel(new GridBagLayout());
         JPanel tablePanel = new JPanel(new GridBagLayout());
+        JPanel controlPanel = new JPanel(new GridBagLayout());
         JPanel buttonPanel = new JPanel(new GridBagLayout());
+        JPanel startAndStopButtons = new JPanel(new GridLayout());
+        JPanel splitAndScoreButtons = new JPanel(new GridLayout(2,1));
 
         splitButton.setEnabled( false );
         stopButton.setEnabled( false );
+        scoreRaceButton.setEnabled( false );
 
-        splitButton.setFont(new Font("Helvetica", Font.BOLD, 24));
-        timeClock.setFont(new Font("Helvetica", Font.BOLD, 40));
-        stopButton.setFont(new Font("Helvetica", Font.BOLD, 20));
+        splitButton.setFont(new Font("Helvetica", Font.PLAIN, 24));
+        stopButton.setFont(new Font("Helvetica", Font.PLAIN, 20));
         startButton.setFont(new Font("Helvetica", Font.BOLD, 20));
+        scoreRaceButton.setFont(new Font("Helvetica", Font.PLAIN, 20));
+        timeClock.setFont(new Font("Helvetica", Font.BOLD, 40));
 
         stopButton.setOpaque(true);
         stopButton.setBackground(new Color(255, 70, 70));
@@ -221,16 +267,25 @@ public class XCScoreGUI extends JPanel{
         startButton.setOpaque(true);
         startButton.setBackground(new Color(114, 255, 93));
         startButton.setForeground(new Color(114, 255, 93));
-
-        // timer.start();
+        scoreRaceButton.setOpaque(true);
+        scoreRaceButton.setBackground(new Color(118, 221, 255));
+        splitButton.setOpaque(true);
+        splitButton.setBackground(new Color(118, 221, 255));
 
         tablePanel.add(createSplitTable(), Constraints.splitTable);
-        buttonPanel.add(timeClock, Constraints.timeClock);
-        buttonPanel.add(startButton, Constraints.startButton);
-        buttonPanel.add(stopButton, Constraints.stopButton);
-        buttonPanel.add(splitButton, Constraints.splitButton);
+
+        startAndStopButtons.add(startButton);
+        startAndStopButtons.add(stopButton);
+        splitAndScoreButtons.add(scoreRaceButton);
+        splitAndScoreButtons.add(splitButton);
+        buttonPanel.add(startAndStopButtons, Constraints.startButton);
+        buttonPanel.add(splitAndScoreButtons, Constraints.splitButton);
+
+        controlPanel.add(buttonPanel, Constraints.splitButton);
+        controlPanel.add(timeClock, Constraints.timeClock);
+
         mainPanel.add(tablePanel, Constraints.mainPanelTable);
-        mainPanel.add(buttonPanel, Constraints.mainPanelButtons);
+        mainPanel.add(controlPanel, Constraints.mainPanelButtons);
         return mainPanel;
     }
 
@@ -238,6 +293,10 @@ public class XCScoreGUI extends JPanel{
         JBScrollPane tablePane = new JBScrollPane(splitTable);
         tablePane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
+        splitTable.getColumnModel().getColumn(0).setPreferredWidth(10);
+        splitTable.getColumnModel().getColumn(1).setPreferredWidth(100);
+        splitTable.getColumnModel().getColumn(2).setPreferredWidth(10);
+        splitTable.getColumnModel().getColumn(3).setPreferredWidth(50);
         TableColumn bibNumberColumn = splitTable.getColumnModel().getColumn(0);
 
         bibNumberColumn.setCellEditor(new ComboBoxCellEditor(bibNumbers));
@@ -286,11 +345,30 @@ public class XCScoreGUI extends JPanel{
         return tablePane;
     }
 
+    public void displayResults(){
+        JFrame resultsFrame = new JFrame("Results");
+        JPanel resultsPanel = new JPanel(new GridBagLayout());
+        JTextPane results = new JTextPane();
+
+        resultsFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        String[][] resultsData = packageTableData(splitTableModel);
+        String finalRanking = xcscore.scoreRace(resultsData);
+
+        results.setText(finalRanking);
+
+        resultsPanel.add(results);
+        resultsFrame.add(resultsPanel);
+
+        resultsFrame.pack();
+        resultsFrame.setVisible(true);
+    }
+
     public static void createAndShowGUI() {
         JFrame frame = new JFrame("XCScore");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        frame.add(new XCScoreGUI(true), BorderLayout.CENTER);
+        frame.add(new XCScoreGUI(), BorderLayout.CENTER);
 
         frame.pack();
         frame.setVisible(true);

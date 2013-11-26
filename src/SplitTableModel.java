@@ -1,10 +1,9 @@
+import com.intellij.ui.table.JBTable;
+
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
+import javax.swing.table.*;
 import java.awt.*;
 
 /**
@@ -15,26 +14,35 @@ import java.awt.*;
  * To change this template use File | Settings | File Templates.
  */
 
-public class SplitTableModel extends DefaultTableModel implements TableModelListener {
+public class SplitTableModel extends DefaultTableModel {
     private boolean DEBUG;
+    private XCScore xcscore;
 
     public SplitTableModel(){
         this.DEBUG = false;
     }
 
-    public SplitTableModel(boolean debug){
-        super(new Object[]{"Bib", "Name", "Team", "Race", "Finish"}, 0);
+    public SplitTableModel(boolean debug, XCScore xcscore){
+        super(new Object[]{"Bib", "Name", "Team", "Finish"}, 0);
         this.DEBUG = debug;
-    }
-
-    @Override
-    public void tableChanged(TableModelEvent tableModelEvent) {
-        System.out.println("Is this working how I think it does?");
+        this.xcscore = xcscore;
     }
 
     public Class<?> getColumnClass(int col) {
         if (col == 1){ return JComboBox.class; }
         return String.class;
+    }
+
+    public void setValueAt(Object value, int row, int col){
+        super.setValueAt(value, row, col);
+
+        if (col == 0){
+            String[] runnerData = xcscore.getSingleRunnerData((String)value);
+            for (String data : runnerData){
+                col++;
+                super.setValueAt(data, row, col);
+            }
+        }
     }
 
     @Override
